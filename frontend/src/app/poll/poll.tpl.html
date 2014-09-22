@@ -1,0 +1,19 @@
+<h1>{{ poll.title }}</h1>
+
+<table class='table'>
+  <tr>
+    <td>User</td>
+    <td ng-repeat="date in poll.dates">{{ date|date }}</td>
+  </tr>
+  <tr ng-repeat="user in poll.users">
+    <td><input type=text ng-model="user.name" /></td>
+    <td ng-repeat="vote in user.votes"><input type="checkbox" ng-model="vote.result" /></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td ng-repeat="date in poll.dates">{{ getDateTotal($index) }}</td>
+  </tr>
+</table>
+<button class="btn" ng-click="addUser()">+</button>
+
+
