@@ -7,7 +7,9 @@
   </tr>
   <tr ng-repeat="user in poll.users">
     <td><input type=text ng-model="user.name" /></td>
-    <td ng-repeat="vote in user.votes"><input type="checkbox" ng-model="vote.result" /></td>
+    <td ng-repeat="vote in user.votes">
+      <pie-select ng-model="vote.result"></pie-select>
+    </td>
   </tr>
   <tr>
     <td></td>

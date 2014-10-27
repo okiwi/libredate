@@ -1,6 +1,7 @@
 angular.module( 'LibreDate.poll', [
   'ui.router',
-  'plusOne'
+  'plusOne',
+  'pieSelect'
 ])
 
 /**
@@ -42,7 +43,7 @@ angular.module( 'LibreDate.poll', [
       votes: mockPoll.map(function (date) {
         return {
           date: date,
-          result: false
+          result: optionsMap['?']
         };
       })
     };
@@ -51,7 +52,7 @@ angular.module( 'LibreDate.poll', [
 
   $scope.getDateTotal = function (i) {
    return $scope.poll.users.reduce(function(previous, user){
-      return previous + (user.votes[i].result ? 1 : 0);
+      return previous + (user.votes[i].result.short === "V" ? 1 : 0);
    }, 0);
   };
 })

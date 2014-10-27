@@ -1,0 +1,119 @@
+.pie-select {
+  position: relative;
+}
+.pie-select.active.V .choiceSphere .V {
+  border: 1px solid #000;
+}
+.pie-select .V {
+  background-color: #52e099;
+}
+.pie-select .V:hover {
+  background-color: #1fad66;
+  box-shadow: inset 0 0 0.3em #157947;
+}
+.pie-select.active.X .choiceSphere .X {
+  border: 1px solid #000;
+}
+.pie-select .X {
+  background-color: #e05252;
+}
+.pie-select .X:hover {
+  background-color: #ad1f1f;
+  box-shadow: inset 0 0 0.3em #791515;
+}
+.pie-select.active.bof .choiceSphere .bof {
+  border: 1px solid #000;
+}
+.pie-select .bof {
+  background-color: #e0b152;
+}
+.pie-select .bof:hover {
+  background-color: #ad7e1f;
+  box-shadow: inset 0 0 0.3em #795815;
+}
+.pie-select.active.NC .choiceSphere .NC {
+  border: 1px solid #000;
+}
+.pie-select .NC {
+  background-color: #999;
+}
+.pie-select .NC:hover {
+  background-color: #666;
+  box-shadow: inset 0 0 0.3em #474747;
+}
+.pie-select .status {
+  display: block;
+  width: 50px;
+  height: 50px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  border: 0;
+}
+.pie-select .choiceSphere {
+  transform: scale(0) rotate(45deg);
+  opacity: 0;
+}
+.pie-select.active .choiceSphere {
+  transform: scale(1) rotate(45deg);
+  opacity: 1;
+}
+.pie-select .choiceSphere {
+  transition: all 0.4s;
+  position: absolute;
+  z-index: 1;
+  top: -25px;
+  left: -25px;
+  width: 100px;
+  height: 100px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  cursor: pointer;
+}
+.pie-select .choiceSphere span {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  float: left;
+  transition: all 0.6s ease;
+}
+.pie-select .choiceSphere span a {
+  display: block;
+  transform: rotate(-45deg);
+}
+.pie-select .choiceSphere .V {
+  border-top-left-radius: 100%;
+}
+.pie-select .choiceSphere .X {
+  border-bottom-right-radius: 100%;
+}
+.pie-select .choiceSphere .bof {
+  border-top-right-radius: 100%;
+}
+.pie-select .choiceSphere .NC {
+  border-bottom-left-radius: 100%;
+}
+body {
+  padding: 50px;
+}
+#demoSelect {
+  display: flex;
+  margin-bottom: 50px;
+}
+.demoBlock {
+  flex: 1;
+}
+select {
+  display: block;
+}
+.pie-select {
+  display: inline-block;
+}
+

@@ -1,0 +1,84 @@
+/* ergonomic select component rules */
+@taille: 50px;
+@luminance: 60%;
+@luminanceHoverBoost: -20%;
+@saturation: 70%;
+
+choiceMixin(@choiceClass, @h, @s, @l) {
+  &.active {unquote(choiceClass) } .choiceSphere {
+  unquote(choiceClass)
+  }
+    border: 1px solid black;
+  {unquote(choiceClass)}
+    colorMixin(h,s,l)
+}
+
+colorMixin(h,s,l)
+  background-color: hsl(h,s,l);
+  &:hover
+    activeMixin(h,s,l+@luminanceHoverBoost)
+
+activeMixin(h,s,l)
+    background-color: hsl(h,s,l);
+    box-shadow: inset 0 0 0.3em darken(hsl(h,s,l), 30%);
+    //box-shadow: 0 0 1em hsla(h,s,l+@luminanceHoverBoost, 0.8), 0 0 1.8em hsla(h,s,l+@luminanceHoverBoost, 0.6), inset 0 0 0.2em darken(hsl(h,s,l+@luminanceHoverBoost), 30%);
+
+.quadBox
+  position:relative;
+  choiceMixin('.V',150,@saturation,@luminance)
+  choiceMixin('.X',0,@saturation,@luminance)
+  choiceMixin('.bof',40,@saturation,@luminance)
+  choiceMixin('.NC',0,0,@luminance)
+  .status
+    display:block;
+    width:@taille;
+    height:@taille;
+    font-family:sans-serif;
+    font-weight:bold;
+    font-size: @taille*0.7;
+    line-height: @taille;
+    text-align:center;
+    cursor:pointer;
+    border:0;
+
+  .choiceSphere{transform:scale(0) rotate(45deg);opacity:0;}
+  &.active .choiceSphere{transform:scale(1) rotate(45deg);opacity:1;}
+  .choiceSphere{
+    transition: all 0.4s;
+    position:absolute;
+    z-index:1;
+    top:-(@taille/2);
+    left:-(@taille/2);
+    width: @taille*2;
+    height: @taille*2;
+    font-family:sans-serif;
+    font-weight:bold;
+    font-size: @taille*0.5;
+    cursor:pointer;
+
+    span{
+      box-sizing: border-box;
+      display:inline-block;
+      width: @taille;
+      height: @taille;
+      line-height: @taille;
+      text-align:center;
+      float:left;
+      transition: all 0.6s ease;
+      a{
+        display:block;
+        transform: rotate(-45deg);
+      }
+    }
+    .V { border-top-left-radius: 100%; }
+    .X { border-bottom-right-radius: 100%; }
+    .bof { border-top-right-radius: 100%; }
+    .NC { border-bottom-left-radius: 100%; }
+  }
+
+// demo styling rules
+body{padding: 50px;}
+#demoSelect {display:flex; margin-bottom:50px;}
+.demoBlock{flex:1;}
+select{display:block;}
+.quadBox{display:inline-block;}

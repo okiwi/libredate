@@ -14,11 +14,11 @@ describe('PollCtrl', function() {
     expect(scope.poll.users.length).toBe(0);
     scope.addUser();
     expect(scope.poll.users.length).toBe(1);
-    expect(scope.poll.users[0].name).toBe("Unnamed"); 
+    expect(scope.poll.users[0].name).toBe("Unnamed");
   }));
   it('can calculate date totals', function()  {
     scope.addUser();
-    scope.poll.users[0].votes[0].result = true;
+    scope.poll.users[0].votes[0].result.short = "V";
     expect(scope.getDateTotal(0)).toBe(1);
   });
 });
