@@ -8,7 +8,7 @@ describe('PollCtrl', function() {
 
   it('scope has the poll dates', inject(function() {
     expect(scope.poll.dates.length).toBe(4);
-    expect(scope.poll.title).toBe("This is the title");
+    expect(scope.poll.title).toBe("This is the poll");
   }));
   it('can add a user', inject(function() {
     expect(scope.poll.users.length).toBe(0);

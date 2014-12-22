@@ -22,32 +22,48 @@ angular.module( 'LibreDate.poll', [
   });
 })
 
-/**
- * And of course we define a controller for our route.
- */
-.controller( 'PollCtrl', function HomeController( $scope ) {
+.service('PollService', function () {
   var mockPoll = [
     new Date(2014, 01, 02),
     new Date(2014, 01, 03),
     new Date(2014, 01, 04),
     new Date(2014, 01, 05)
   ];
-  $scope.poll = {
-    title: "This is the title",
+  var poll = {
+    title: "This is the poll",
     dates: mockPoll,
     users: []
   };
+  return {
+    getPoll: function () {
+      return poll;
+    },
+    getUser: function () {
+      return {
+        name: "Unnamed",
+        votes: mockPoll.map(function (date) {
+          return {
+            date: date,
+            result: optionsMap['?']
+          };
+        })
+      };
+    },
+    save: function () {
+      console.log(poll);
+    }
+  };
+})
+/**
+ * And of course we define a controller for our route.
+ */
+.controller( 'PollCtrl', function HomeController( $scope, $log, PollService ) {
+  $scope.poll = PollService.getPoll();
   $scope.addUser = function () {
-    user = {
-      name: "Unnamed",
-      votes: mockPoll.map(function (date) {
-        return {
-          date: date,
-          result: optionsMap['?']
-        };
-      })
-    };
-    $scope.poll.users.push(user);
+    $scope.poll.users.push(PollService.getUser());
+  };
+  $scope.savePoll = function () {
+    PollService.save();
   };
 
   $scope.getDateTotal = function (i) {
