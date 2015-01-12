@@ -30,13 +30,16 @@ angular.module( 'LibreDate.poll', [
     new Date(2014, 01, 05)
   ];
   var poll = {
+    id: 1,
     title: "This is the poll",
     dates: mockPoll,
     users: []
   };
+  var id;
   return {
-    getPoll: function () {
-      return poll;
+    getNewPoll()
+    getPoll: function (pollId) {
+      return $http.get('/poll/' + pollId)
     },
     getUser: function () {
       return {
@@ -50,6 +53,7 @@ angular.module( 'LibreDate.poll', [
       };
     },
     save: function () {
+      
       console.log(poll);
     }
   };
@@ -58,7 +62,7 @@ angular.module( 'LibreDate.poll', [
  * And of course we define a controller for our route.
  */
 .controller( 'PollCtrl', function HomeController( $scope, $log, PollService ) {
-  $scope.poll = PollService.getPoll();
+  $scope.poll = PollService.getPoll(id);
   $scope.addUser = function () {
     $scope.poll.users.push(PollService.getUser());
   };
